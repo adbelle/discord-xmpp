@@ -99,7 +99,7 @@ discord.on("message", function(message) {
 	
 	if (message.attachments.length){
 		TinyURL.shorten(message.attachments[0].url,function(res){
-			xmpp.send(new XMPP.Stanza('message', { to: ROOM_JID, type: 'groupchat', id: RANDOM_ID })
+			xmpp.send(new XMPP.Stanza('message', { to: ROOM_JID, type: 'groupchat' })
 				.c('body')
 				.t((message.member.nickname ? message.member.nickname : message.author.username) + 
 					(isMe ? ' ' : ': ') +
@@ -111,7 +111,7 @@ discord.on("message", function(message) {
 					  (message.member.nickname ? message.member.nickname : message.author.username) + 
 					  (isMe ? ' ' : '] ') +	content;
 					  
-		xmpp.send(new XMPP.Stanza('message', { to: ROOM_JID, type: 'groupchat', id: RANDOM_ID })
+		xmpp.send(new XMPP.Stanza('message', { to: ROOM_JID, type: 'groupchat' })
 			.c('body')
 			.t(message));
 		if (DEBUG) {
